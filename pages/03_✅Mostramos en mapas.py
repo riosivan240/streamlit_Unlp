@@ -21,31 +21,42 @@ def generar_mapa():
     return m
 
 
-lagos = pd.read_csv('lagos_arg.csv')
+felinos = pd.read_csv('felinos.csv')
 st.title("Mapa")
 mapa = generar_mapa()
+
+st.write("En esta sección se puede visualizar un mapa en el cual se puede seleccionar qué tipo de felino se quiere ver en dicho mapa.")
+st.write("Curiosamente, se puede observar que solo en Misiones se avistaron panteras, mientras que en el resto de las provincias se registraron más avistamientos de pumas que de leopardos.")
 
 def agregar_marca_aerop(row):
     
     #st.write(color)
     folium.Marker(
         [row['lat'], row['lng']],
-        popup=row['Nombre'],
+        popup=row['species'],
         icon=folium.Icon()
         ).add_to(mapa)
 
 ac1,ac2 = st.columns([0.3, 0.7])
-r_areas = ac1.checkbox("Grandes")
-if r_areas:
-    a_larg = lagos[lagos['Sup Tamaño']=='grande']
+
+pumas = ac1.checkbox("Puma")
+if pumas:
+    a_larg = felinos[felinos['genus']=='Puma']
     a_larg.apply(agregar_marca_aerop, axis=1)
-r_parques = ac1.checkbox("Medianos")
-if r_parques:
-    a_med = lagos[lagos['Sup Tamaño']=='medio']
-    a_med.apply(agregar_marca_aerop, axis=1)
-r_monu = ac1.checkbox("Pequeños")
-if r_monu:
-    a_small = lagos[lagos['Sup Tamaño']=='chico']
-    a_small.apply(agregar_marca_aerop, axis=1)
+
+Panthera = ac1.checkbox("Panthera")
+if Panthera:
+    a_larg = felinos[felinos['genus']=='Panthera']
+    a_larg.apply(agregar_marca_aerop, axis=1)
+
+Leopardus = ac1.checkbox("Leopardus")
+if Leopardus:
+    a_larg = felinos[felinos['genus']=='Leopardus']
+    a_larg.apply(agregar_marca_aerop, axis=1)
+
+
+
+
+
 with ac2:
     st_folium(mapa, key='lagos')
