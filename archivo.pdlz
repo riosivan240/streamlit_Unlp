@@ -1,0 +1,175 @@
+{
+  "_signature": "PDLZ_v1::1762962036861",
+  "data": {
+    "variables": [
+      {
+        "id": "172019851",
+        "name": "gatos"
+      }
+    ],
+    "csvsData": [
+      {
+        "id": 619179687,
+        "filename": "felinos.csv",
+        "columnsNames": [
+          "Unnamed: 0",
+          "kingdom",
+          "phylum",
+          "class",
+          "order",
+          "family",
+          "genus",
+          "species",
+          "locality",
+          "stateProvince",
+          "lat",
+          "lng",
+          "elevation",
+          "day",
+          "month",
+          "year",
+          "taxonKey",
+          "ScientificName",
+          "VernacularNames"
+        ]
+      }
+    ],
+    "blocks": {
+      "blocks": {
+        "languageVersion": 0,
+        "blocks": [
+          {
+            "type": "variables_set",
+            "id": "W/RP[*C4]yFdo=:DFIoe",
+            "x": -9,
+            "y": 38,
+            "fields": {
+              "variableSetterKey": "172019851"
+            },
+            "inputs": {
+              "VALUE": {
+                "block": {
+                  "type": "read_csv",
+                  "id": "|QEAYk)-L9%8nFMLpv_I",
+                  "fields": {
+                    "csvOptions": "619179687"
+                  }
+                }
+              }
+            },
+            "next": {
+              "block": {
+                "type": "map_viewer",
+                "id": "z;B+DkY=6.nj5s@E)Z5m",
+                "inputs": {
+                  "DATAFRAME": {
+                    "block": {
+                      "type": "variables_get",
+                      "id": "W.#7VW.Nr60%Q/;,}_Ia",
+                      "fields": {
+                        "variableGetterKey": "172019851"
+                      }
+                    }
+                  },
+                  "LAT": {
+                    "block": {
+                      "type": "get_column_name",
+                      "id": "Q5.#6%qMc~N]*.ceyg0I",
+                      "inputs": {
+                        "COLUMN_SERIES": {
+                          "block": {
+                            "type": "property",
+                            "id": "n=4/.#t;~82P8+[6!+Mn",
+                            "extraState": {
+                              "selectedOption": "lat"
+                            },
+                            "fields": {
+                              "dropdown": "lat"
+                            },
+                            "inputs": {
+                              "blockInput": {
+                                "block": {
+                                  "type": "variables_get",
+                                  "id": "VSWGn,?|N[*c_7HM~HKR",
+                                  "fields": {
+                                    "variableGetterKey": "172019851"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "LONG": {
+                    "block": {
+                      "type": "get_column_name",
+                      "id": "$Fnc$/:L=}QVU1vMZgF8",
+                      "inputs": {
+                        "COLUMN_SERIES": {
+                          "block": {
+                            "type": "property",
+                            "id": "9VMIYAH#^uq}EB}by5ia",
+                            "extraState": {
+                              "selectedOption": "lng"
+                            },
+                            "fields": {
+                              "dropdown": "lng"
+                            },
+                            "inputs": {
+                              "blockInput": {
+                                "block": {
+                                  "type": "variables_get",
+                                  "id": "Qq[kV;k]3OFZNODRx3:3",
+                                  "fields": {
+                                    "variableGetterKey": "172019851"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "CATEGORY": {
+                    "block": {
+                      "type": "get_column_name",
+                      "id": "ii0G^9.Gqicyd+tH{2ii",
+                      "inputs": {
+                        "COLUMN_SERIES": {
+                          "block": {
+                            "type": "property",
+                            "id": "BUOc#-TDZ1bXu^o5TXFf",
+                            "extraState": {
+                              "selectedOption": "genus"
+                            },
+                            "fields": {
+                              "dropdown": "genus"
+                            },
+                            "inputs": {
+                              "blockInput": {
+                                "block": {
+                                  "type": "variables_get",
+                                  "id": "#fQv$7wY5J2MTo#v|@D$",
+                                  "fields": {
+                                    "variableGetterKey": "172019851"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
